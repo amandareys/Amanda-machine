@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="div_card">
+
+        <div id="div_imagem"> <img src="./imagens/titulo_machine.png"></div>
+
+        <div id="div_inputs">
+            <h3>Digite um número em Decimal:</h3>
+            <input oninput="converter('decimal')" type="text" id="ipt_dec">
+
+            <h3>Digite um número em Binário</h3>
+            <input oninput="converter('binario')" type="text" id="ipt_bin">
+
+            <h3>Digite um número em Octal</h3>
+            <input oninput="converter('octal')" type="text" id="ipt_oct">
+
+            <h3>Digite um número em Hexadecimal</h3>
+            <input oninput="converter('hexadecimal')" type="text" id="ipt_hex">
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    function converter(origem) {
+
+        let valor = "";
+
+        if (origem == 'decimal') valor = ipt_dec.value;
+        if (origem == 'binario') valor = ipt_bin.value;
+        if (origem == 'octal') valor = ipt_oct.value;
+        if (origem == 'hexadecimal') valor = ipt_hex.value;
+
+        if (valor == "") {
+            ipt_dec.value = "";
+            ipt_bin.value = "";
+            ipt_oct.value = "";
+            ipt_hex.value = "";
+        }
+
+        let decimal = 0;
+        if (origem == 'decimal') decimal = parseInt(valor, 10);
+        else if (origem == 'binario') decimal = parseInt(valor, 2);
+        else if (origem == 'octal') decimal = parseInt(valor, 8);
+        else if (origem == 'hexadecimal') decimal = parseInt(valor, 16);
+
+        if (isNaN(decimal)) return;
+
+        ipt_dec.value = decimal;
+        ipt_bin.value = decimal.toString(2);
+        ipt_oct.value = decimal.toString(8);
+        ipt_hex.value = decimal.toString(16).toUpperCase();
+
+    }
+</script>
